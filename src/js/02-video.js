@@ -6,36 +6,29 @@ const player = new Player(iframe);
 
 const CURRENT_TIME = 'videoplayer-current-time';
 
-console.log(player);
+if (localStorage.getItem(CURRENT_TIME)) {
+    player.setCurrentTime(localStorage.getItem(CURRENT_TIME)).then(function(seconds) {
+    // seconds = the actual time that the player seeked to
+}).catch(function(error) {
+    switch (error.name) {
+        case 'RangeError':
+            // the time was less than 0 or greater than the video’s duration
+            break;
 
-// const onPlay = {
-//     player.getCurrentTime().then(function(seconds) {
-//         // seconds = the current playback position
-//         console.log(seconds)
-//     }).catch(function(error) {
-//         // an error occurred
-//     });
-// }; 
+        default:
+            // some other error occurred
+            break;
+    }
+});
+}
+
+
 
 const onPlay = function(data) {
-    // console.log(player.getCurrentTime().then(function(seconds) {
-    //     // seconds = the current playback position
-    // }).catch(function(error) {
-    //     // an error occurred
-    // })
-    // )
     localStorage.setItem(CURRENT_TIME, data.seconds)
-    console.log(localStorage.getItem(CURRENT_TIME));
 };
 
-
-
-
-player.on('timeupdate', onPlay);
-
-player.getVideoTitle().then(function(title) {
-    console.log('title:', title);
-});
+player.on('timeupdate', onPlay, { passive: true });
 
 
 
