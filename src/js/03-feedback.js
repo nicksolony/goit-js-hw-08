@@ -2,13 +2,9 @@ const FORM_STATE = "feedback-form-state";
 
 const form = document.querySelector(".feedback-form");
 
-
 checkLocalStorage();
 
-if (formData) {
-    form.email.value = formData.email;
-    form.message.value = formData.message;   
-}
+updateFormData();
 
 const recordFormData = function (e) {
     
@@ -16,9 +12,9 @@ const recordFormData = function (e) {
 
     localStorage.setItem(FORM_STATE, JSON.stringify(formData))
     
-}
+};
 
-
+form.addEventListener('submit',e=>onFormSubmit(e));
 
 form.addEventListener('input', recordFormData);
 
@@ -42,3 +38,20 @@ function checkLocalStorage() {
 
 //     localStorage.setItem(FORM_STATE, JSON.stringify(formData))
 // }
+
+function updateFormData () {
+    if (formData) {
+        form.email.value = formData.email;
+        form.message.value = formData.message;   
+    }
+};
+
+function onFormSubmit(e) {
+    e.preventDefault();
+    console.log(JSON.parse(localStorage.getItem(FORM_STATE)));
+
+    localStorage.removeItem(FORM_STATE);
+    checkLocalStorage();
+    updateFormData();
+
+};
