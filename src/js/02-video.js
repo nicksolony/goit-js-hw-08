@@ -1,4 +1,5 @@
 import Player from '@vimeo/player';
+import throttle from 'lodash.throttle';
 
 
 const iframe = document.querySelector('iframe');
@@ -28,7 +29,7 @@ const onPlay = function(data) {
     localStorage.setItem(CURRENT_TIME, data.seconds)
 };
 
-player.on('timeupdate', onPlay, { passive: true });
+player.on('timeupdate', throttle(onPlay, 1000), { passive: true });
 
 
 
