@@ -35,14 +35,6 @@ function checkLocalStorage() {
     
 };
 
-// function recordFormData(e) {
-//     checkLocalStorage();
-    
-//     formData[`${e.target.name}`] = e.target.value;
-
-//     localStorage.setItem(FORM_STATE, JSON.stringify(formData))
-// }
-
 function updateFormData () {
     if (formData) {
         form.email.value = formData.email;
