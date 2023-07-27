@@ -9,9 +9,7 @@ let formData = {
 
 const recordFormData = function (e) {
     
-    if (localStorage.getItem(FORM_STATE)) {
-        formData = JSON.parse(localStorage.getItem(FORM_STATE))
-    };
+  checkLocalStorage();
     
     formData[`${e.target.name}`] = e.target.value;
 
@@ -21,3 +19,10 @@ const recordFormData = function (e) {
 
 form.addEventListener('input', recordFormData);
 
+function checkLocalStorage() {
+
+    if (localStorage.getItem(FORM_STATE)) {
+        formData = JSON.parse(localStorage.getItem(FORM_STATE))
+    };
+    
+};
