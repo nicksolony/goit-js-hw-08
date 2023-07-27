@@ -1,2 +1,0 @@
-!function(){var a="feedback-form-state",e=document.querySelector(".feedback-form");localStorage.getItem(a)?formData=JSON.parse(localStorage.getItem(a)):formData={email:"",message:""},formData&&(e.email.value=formData.email,e.message.value=formData.message);e.addEventListener("input",(function(e){formData["".concat(e.target.name)]=e.target.value,localStorage.setItem(a,JSON.stringify(formData))}))}();
-//# sourceMappingURL=03-feedback.3f3a2f45.js.map
