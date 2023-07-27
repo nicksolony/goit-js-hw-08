@@ -1,0 +1,2 @@
+const e=document.querySelector(".feedback-form");localStorage.getItem("feedback-form-state")?formData=JSON.parse(localStorage.getItem("feedback-form-state")):formData={email:"",message:""},formData&&(e.email.value=formData.email,e.message.value=formData.message);e.addEventListener("input",(function(e){formData[`${e.target.name}`]=e.target.value,localStorage.setItem("feedback-form-state",JSON.stringify(formData))}));
+//# sourceMappingURL=03-feedback.9129b16d.js.map
