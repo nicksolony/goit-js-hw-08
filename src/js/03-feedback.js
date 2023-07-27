@@ -4,6 +4,8 @@ const FORM_STATE = "feedback-form-state";
 
 const form = document.querySelector(".feedback-form");
 
+let formData;
+
 checkLocalStorage();
 
 updateFormData();
